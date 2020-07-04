@@ -22,10 +22,11 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-secondary shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{-- {{ config('app.name', 'Laravel') }} --}}
+                    WebMall
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -39,13 +40,16 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <li class="nav-item">
                             <a class="nav-link p-0 m-0" href="{{ route('cart.index') }}">
                                 <i class="fas fa-cart-arrow-down text-primary fa-2x"></i> 
-                                <div class="badge badge-danger">
-                                    <?php $userId = auth()->user()->id ?>
+                                <div class="badge badge-succes">
+                                    <?php $userId = auth()->id() ?> 
+                                    @auth        <!-- onlu authenticated user can see the cart -->
                                     {{ Cart::session($userId)->getContent()->count() }}
+                                    @else          <!-- user not logged in then see 0 in badge -->
+                                    0
+                                    @endauth
                                 </div>
                             </a>
                         </li>
