@@ -7,6 +7,14 @@ use App\Product;
 
 class CartController extends Controller
 {
+    
+    // Add Items in the cart
+    public function index()
+    {
+        $cartItems = \Cart::session(auth()->user()->id)->getContent();
+        return view('cart.index',compact('cartItems'));
+    }
+
     public function addToCart(Product $productid)
     {
         // dd($productid);
@@ -28,23 +36,8 @@ class CartController extends Controller
         // return redirect('/cart');
         return redirect()->route('cart.index');
     }
-
-    // Add Items in the cart
-    public function index()
-    {
-        $cartItems = \Cart::session(auth()->user()->id)->getContent();
-        return view('cart.index',compact('cartItems'));
-    }
-
-    // Deletes the item from the cart
-    public function destroy($itemid)
-    {
-        $userId = auth()->user()->id;
-        \Cart::session($userId)->remove($itemid);
-
-        return back();
-    }
-
+    
+    // Updates the cart
     public function update($rowId)
     {
         $userID = auth()->user()->id;
@@ -57,4 +50,20 @@ class CartController extends Controller
 
         return back();
     }
+
+    // Deletes the item from the cart
+    public function destroy($itemid)
+    {
+        $userId = auth()->user()->id;
+        \Cart::session($userId)->remove($itemid);
+
+        return back();
+    }
+
+    // Cart checkout
+    public function checkout()
+    {
+        return view('cart.checkout');
+    }
+
 }
