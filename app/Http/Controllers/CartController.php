@@ -7,14 +7,14 @@ use App\Product;
 
 class CartController extends Controller
 {
-    
-    // Add Items in the cart
+    // Shows the Items in the cart
     public function index()
     {
         $cartItems = \Cart::session(auth()->user()->id)->getContent();
         return view('cart.index',compact('cartItems'));
     }
 
+    // Add Items in the cart
     public function addToCart(Product $productid)
     {
         // dd($productid);
