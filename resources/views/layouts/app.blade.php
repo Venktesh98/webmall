@@ -43,9 +43,9 @@
                         <li class="nav-item">
                             <a class="nav-link p-0 m-0" href="{{ route('cart.index') }}">
                                 <i class="fas fa-cart-arrow-down text-primary fa-2x"></i> 
-                                <div class="badge badge-succes">
+                                <div class="badge badge-success">
                                     <?php $userId = auth()->id() ?> 
-                                    @auth        <!-- onlu authenticated user can see the cart -->
+                                    @auth        <!-- only authenticated user can see the cart -->
                                     {{ Cart::session($userId)->getContent()->count() }}
                                     @else          <!-- user not logged in then see 0 in badge -->
                                     0
@@ -88,6 +88,20 @@
                 </div>
             </div>
         </nav>
+
+        {{-- Display success message --}}
+        @if (session()->has('message'))
+            <div class="alert alert-success" role="alert">
+                {{session('message')}}
+            </div>
+        @endif
+
+        {{-- Display error message --}}
+        @if (session()->has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{session('error')}}
+            </div>
+        @endif
 
         <main class="py-4">
             @yield('content')
