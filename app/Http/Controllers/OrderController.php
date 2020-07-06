@@ -77,10 +77,14 @@ class OrderController extends Controller
         $order->grand_total = \Cart::session(auth()->id())->getTotal();   # gets the order total from cart
         $order->item_count = \Cart::session(auth()->id())->getContent()->count();  # counts the total items from cart
 
-        $order->user_id = auth()->id();
+        $order->user_id = auth()->id();    # gets the user_id of specific user who ordered.
 
-        $order->save();
-        
+        if(request('payment_method') == 'paypal')
+        {
+            $order->payment_method = 'paypal';
+        }
+
+        $order->save();    #saves the items in the db.
         
         // save cart items
         $cartItems = \Cart::session(auth()->id())->getContent();
@@ -89,11 +93,17 @@ class OrderController extends Controller
         foreach($cartItems as $item) {
            $order->items()->attach($item->id,['price'=>$item->price,'quantity'=>$item->quantity]);
         }
-        // empty cart
-            \Cart::session(auth()->id())->clear();   # carts get empty after successful placed order
 
-        return "Order completed ,Thanks for your order";
-        // dd($order);
+        // Payments Process
+        if(request('payment_method') == 'paypal')
+        {
+            return redirect()->route('paypal.checkout',$order->id);
+        }
+
+        // empty cart
+        \Cart::session(auth()->id())->clear();   # carts get empty after successful placed order
+
+        return redirect()->route('home')->withMessage('Order has placed successful!');
     }
 
     /**
