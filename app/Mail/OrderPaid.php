@@ -12,7 +12,7 @@ class OrderPaid extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $order;  # made public coz can be used in the mail.order.paid blade
+    public $order;  # made public coz can be used in the mail/order/paid.blade.php
 
     /**
      * Create a new message instance.
