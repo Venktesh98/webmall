@@ -139,7 +139,8 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Darryldecode\Cart\CartServiceProvider::class,
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,   # for paypal
+        Darryldecode\Cart\CartServiceProvider::class,              # for cart 
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -190,7 +191,8 @@ return [
     */
 
     'aliases' => [
-        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,      # for paypal
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,  # for cart
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
