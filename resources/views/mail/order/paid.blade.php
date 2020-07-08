@@ -1,7 +1,7 @@
 @component('mail::message')
-# Intvoice Paid
+# Invoice Paid
 
-thnaks for the purchase.
+thanks for the purchase.
 
 Here is your receipt
 
@@ -27,7 +27,7 @@ Here is your receipt
 Total:{{$order->grand_total}}
 
 @component('mail::button', ['url' => ''])
-Button Text
+View Receipt
 @endcomponent
 
 Thanks,<br>

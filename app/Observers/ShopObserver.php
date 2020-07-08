@@ -36,7 +36,7 @@ class ShopObserver
             // change role from customer to seller.
             $shop->owner->setRole('seller');
 
-            dd($shop);
+            // dd($shop);
 
         }
         else{
