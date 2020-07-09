@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Product;
+use Illuminate\Http\Request;
+use TCG\Voyager\Models\Category;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -24,9 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-       $products = Product::all();
-    //    dd($products);
-        return view('home',compact('products'));
+       $products = Product::take(8)->get();
 
+       $categories = Category::whereNull('parent_id')->get();
+    //    dd($categories);
+        return view('home',compact('products','categories'));
     }
 }
