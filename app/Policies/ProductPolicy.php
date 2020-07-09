@@ -57,9 +57,9 @@ class ProductPolicy
      */
     public function add(User $user, Product $product)
     {
-        if(empty($product->shop)){      # if there is no shop
-            return false;
-        }
+        // if(empty($product->shop)){      # if there is no shop
+        //     return false;
+        // }
 
         return $user->hasRole('seller'); 
     }
