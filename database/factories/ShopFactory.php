@@ -11,4 +11,5 @@ $factory->define(Shop::class, function (Faker $faker) {
         'description'=>$faker->sentence(20),
         'is_active'=> true
     ];
+    // After this it will go to the ProductSeeder file and from there will go to the migration.
 });
