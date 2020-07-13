@@ -147,6 +147,20 @@
     </header>
     <!-- header end -->
 
+    {{-- Display success message --}}
+    @if (session()->has('message'))
+        <div class="alert alert-success" role="alert" align="center">
+            {{session('message')}}
+        </div>
+    @endif
+
+    {{-- Display error message --}}
+    @if (session()->has('error'))
+        <div class="alert alert-danger" role="alert" align="center">
+            {{session('error')}}
+        </div>
+    @endif
+
     @yield('content')        <!-- yielding the content over here from home.blade.php -->
 
     {{-- <div class="banner-area wrapper-padding pt-30 pb-95">
@@ -513,10 +527,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <!-- all js here -->
     <script src="/assets/js/vendor/jquery-1.12.0.min.js"></script>
