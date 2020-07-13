@@ -86,7 +86,7 @@
                                                 </form>
                                                 {{-- <input value="{{ $item->quantity }}" type="number"> --}}
                                             </td>
-                                            <td class="product-subtotal">$165.00</td>
+                                            <td class="product-subtotal">${{\Cart::session(auth()->user()->id)->getSubTotal()}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -95,9 +95,11 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="coupon-all">
-                                    <div class="coupon">
-                                        <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-        <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
+                                    <div class="coupon">   <!-- gets the coupon code from here -->
+                                        <form action="{{ route('cart.coupon') }}" method="get">
+                                            <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
+                                            <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
+                                        </form>
                                     </div>
                                     {{-- <div class="coupon2">
                                         <input class="button" name="update_cart" value="Update cart" type="submit">
@@ -110,8 +112,8 @@
                                 <div class="cart-page-total">
                                     <h2>Cart totals</h2>
                                     <ul>
-                                        <?php $userId = auth()->user()->id ?>
-                                        <li>Subtotal<span>100.00</span></li>
+                                        <?php $userId = auth()->id() ?>
+                                        <li>Subtotal<span>{{\Cart::session($userId)->getSubTotal()}}</span></li>
                                         <li>Total<span>{{\Cart::session($userId)->getTotal()}}</span></li>
                                     </ul>
                                     <a href="{{ route('cart.checkout') }}">Proceed to checkout</a>
