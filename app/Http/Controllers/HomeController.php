@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
        $products = Product::take(8)->get();
+        //   $products = Product::all();
 
        $categories = Category::whereNull('parent_id')->get();
     //    dd($categories);
