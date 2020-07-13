@@ -20,9 +20,9 @@
                         <div class="sidebar-widget mb-50">
                             <h3 class="sidebar-title">Search Products</h3>
                             <div class="sidebar-search">
-                                <form action="#">
+                                <form action="{{route('products.search')}}"  method="GET">
                                     <input placeholder="Search Products..." type="text">
-                                    <button><i class="ti-search"></i></button>
+                                    <button type="submit"><i class="ti-search"></i></button>
                                 </form>
                             </div>
                         </div>
