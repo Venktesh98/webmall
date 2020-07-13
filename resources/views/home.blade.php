@@ -66,27 +66,15 @@
             <div class="menu-style-3 menu-hover text-center">
                 <nav>
                     <ul>
-                        <li><a href="index.html">home <i class="pe-7s-angle-down"></i> <span class="sticker-new">hot</span></a>
-                            <ul class="single-dropdown">
-                                <li><a href="index.html">Fashion</a></li>
-                                <li><a href="index-fashion-2.html">Fashion style 2</a></li>
-                                <li><a href="index-fruits.html">fruits</a></li>
-                                <li><a href="index-book.html">book</a></li>
-                                <li><a href="index-electronics.html">electronics</a></li>
-                                <li><a href="index-electronics-2.html">electronics style 2</a></li>
-                                <li><a href="index-food.html">food & drink</a></li>
-                                <li><a href="index-furniture.html">furniture</a></li>
-                                <li><a href="index-handicraft.html">handicraft</a></li>
-                                <li><a target="_blank" href="index-smart-watch.html">smart watch</a></li>
-                                <li><a href="index-sports.html">sports</a></li>
-                            </ul>
+                        <li><a href="/">home</a>
+                            
                         </li>
-                        <li><a href="#">pages </a>
+                        <li><a href="#">Details </a>
                             <ul class="single-dropdown">
                                 <li><a href="about-us.html">about us</a></li>
                                 <li><a href="menu-list.html">menu list</a></li>
                                 <li><a href="login.html">login</a></li>
-                                <li><a href="register.html">register</a></li>
+                                <li><a href="/register">register</a></li>
                                 <li><a href="cart.html">cart page</a></li>
                                 <li><a href="checkout.html">checkout</a></li>
                                 <li><a href="wishlist.html">wishlist</a></li>
@@ -145,18 +133,18 @@
             </div>
             <div class="slider-area">
                 <div class="slider-active owl-carousel">
-                    <div class="single-slider single-slider-hm3 bg-img pt-170 pb-173" style="background-image: url(assets/img/slider/5.jpg)">
+                    <div class="single-slider single-slider-hm3 bg-img pt-170 pb-173" style="background-image: url(https://lh3.googleusercontent.com/proxy/2X262z6lwKz8rv-ljQtUmC9ccOq4_N0QbkY0vUErkz7ZqHaduezOpUhqkPwp4PptGPXVkwoXNkqJFaRulExQYNaxScjIaDtfgwpHyThmA8GDd_kIMj3JcoqyegKI_ZZ_jmoz)">
                         <div class="slider-animation slider-content-style-3 fadeinup-animated">
                             <h2 class="animated">Invention of <br>design platform</h2>
-                            <h4 class="animated">Best Product With warranty </h4>
-                            <a class="electro-slider-btn btn-hover" href="product-details.html">buy now</a>
+                            {{-- <h4 class="animated">Best Product With warranty </h4> --}}
+                            {{-- <a class="electro-slider-btn btn-hover" href="product-details.html">buy now</a> --}}
                         </div>
                     </div>
-                    <div class="single-slider single-slider-hm3 bg-img pt-170 pb-173" style="background-image: url(assets/img/slider/20.jpg)">
+                    <div class="single-slider single-slider-hm3 bg-img pt-170 pb-173" style="background-image: url(https://etimg.etb2bimg.com/photo/70545874.cms)">
                         <div class="slider-animation slider-content-style-3 fadeinup-animated">
                             <h2 class="animated">Invention of <br>design platform</h2>
-                            <h4 class="animated">Best Product With warranty </h4>
-                            <a class="electro-slider-btn btn-hover" href="product-details.html">buy now</a>
+                            {{-- <h4 class="animated">Best Product With warranty </h4> --}}
+                            {{-- <a class="electro-slider-btn btn-hover" href="product-details.html">buy now</a> --}}
                         </div>
                     </div>
                 </div>
