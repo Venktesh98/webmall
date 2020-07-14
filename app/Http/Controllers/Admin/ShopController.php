@@ -70,7 +70,7 @@ class ShopController extends VoyagerBasecontroller
                 $query = $model::select('*');
             }
 
-            // query to display the seller's shop only by using seller id   
+            // query to display the seller's shop only by using seller id     <-------------------------->
             if(auth()->user()->hasRole('seller'))
             {
                 $query->where('user_id',auth()->id());           # gets the id from user_id column.
