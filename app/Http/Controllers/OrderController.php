@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\Product;
 
 class OrderController extends Controller
 {
@@ -48,7 +49,7 @@ class OrderController extends Controller
     
         $order = new Order();
 
-        $order->order_number = uniqid('OrderNumber-');   # gets the unique order number
+        $order->order_number = uniqid();   # gets the unique order number
 
         // gets all the fields from the database
         $order->shipping_fullname = $request->shipping_fullname;
@@ -85,7 +86,7 @@ class OrderController extends Controller
         }
 
         $order->save();    #saves the items in the db.
-        
+        dd($order);
         // save cart items
         $cartItems = \Cart::session(auth()->id())->getContent();
         
@@ -114,7 +115,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
