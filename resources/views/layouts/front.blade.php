@@ -60,8 +60,14 @@
                 </div>
                 <div class="electronics-login-register ">
                     <ul>
-                        <li><a href="#"><i class="pe-7s-users"></i>My Account</a></li>
-                        <li><a data-toggle="modal" data-target="#exampleCompare" href="#"><i class="pe-7s-repeat"></i>Compare</a></li>
+                        <li><a href="#"><i class="pe-7s-users"></i>My Account</a>
+                            <ul class="single-dropdown">
+                                <li><a href="#">Register</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">My Orders</a></li>
+                            </ul>
+                        </li>
+                        {{-- <li><a data-toggle="modal" data-target="#exampleCompare" href="#"><i class="pe-7s-repeat"></i>Compare</a></li> --}}
                         <li><a href="wishlist.html"><i class="pe-7s-like"></i>Wishlist</a></li>
                         <li><a href="{{ route('shops.create') }}"><i class="pe-7s-shopbag"></i>Sell on Webmall</a></li> 
                     </ul>
