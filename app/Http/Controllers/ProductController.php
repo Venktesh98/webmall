@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -51,5 +53,13 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('products.show')->with('product',$product);
+    }
+
+    public function userOrders()
+    {
+        $user_id = Auth::user()->id;
+        $orders = Order::with('items')->where('user_id',$user_id)->get();
+        // dd($orders); 
+        return view ('products.myorders')->with('orders',$orders);
     }
 }
