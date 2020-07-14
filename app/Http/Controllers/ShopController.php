@@ -44,9 +44,10 @@ class ShopController extends Controller
 
         // save to db
         $authenticated_user = auth()->user();
-        // shop created
+
+        // shop created   
         $shop = $authenticated_user->shop()->create([
-            'name'=>$request->input('name'),
+            'name'=>$request->input('name'),                # get the fields from the form i.e name and description
             'description'=>$request->input('description'),
         ]);
 
