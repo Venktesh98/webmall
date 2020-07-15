@@ -1,5 +1,4 @@
 <div>
-    <h2>New cart</h2>
     <!-- shopping-cart-area start -->
      <div class="cart-main-area pt-95 pb-100">
         <div class="container">
@@ -41,7 +40,7 @@
                                 <div class="coupon-all">
                                     <div class="coupon">   <!-- gets the coupon code from here -->
                                         <form action="{{ route('cart.coupon') }}" method="get">
-                                            <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
+                                            <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text" required>
                                             <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
                                         </form>
                                     </div>

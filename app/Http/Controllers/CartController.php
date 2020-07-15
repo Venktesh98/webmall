@@ -79,12 +79,15 @@ class CartController extends Controller
             return back()->withMessage('Sorry!,coupon does not exists');
         }
         // coupon logic
-        $condition = new \Darryldecode\Cart\CartCondition(array(
-            'name' => $couponData->name,
-            'type' => $couponData->type,
-            'target' => 'total', // this condition will be applied to cart's total when getTotal() is called.
-            'value' => $couponData->value,
-        ));
+        if($couponCode)
+        {
+            $condition = new \Darryldecode\Cart\CartCondition(array(
+                'name' => $couponData->name,
+                'type' => $couponData->type,
+                'target' => 'total', // this condition will be applied to cart's total when getTotal() is called.
+                'value' => $couponData->value,
+            ));
+        }        
 
         $userId = auth()->id();
         Cart::session($userId)->condition($condition); // for a speicifc user's cart

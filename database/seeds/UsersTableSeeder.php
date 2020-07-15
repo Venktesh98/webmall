@@ -88,7 +88,5 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-02-11 00:16:34',
             ),
         ));
-        
-        
     }
 }

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Order;
 use App\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -49,7 +50,7 @@ class OrderController extends Controller
     
         $order = new Order();
 
-        $order->order_number = uniqid();   # gets the unique order number
+        $orderNumber = $order->order_number = uniqid();   # gets the unique order number
 
         // gets all the fields from the database
         $order->shipping_fullname = $request->shipping_fullname;
@@ -79,6 +80,7 @@ class OrderController extends Controller
         $order->item_count = \Cart::session(auth()->id())->getContent()->count();  # counts the total items from cart
 
         $order->user_id = auth()->id();    # gets the user_id of specific user who ordered.
+        $order->user_email = auth()->user()->email;   
 
         if(request('payment_method') == 'paypal')
         {
@@ -86,7 +88,7 @@ class OrderController extends Controller
         }
 
         $order->save();    #saves the items in the db.
-        dd($order);
+        // dd($order);
         // save cart items
         $cartItems = \Cart::session(auth()->id())->getContent();
         
@@ -96,6 +98,21 @@ class OrderController extends Controller
         }
 
         // Payments Process
+        // sends the mail to the customer when order placed
+        if(request('payment_method') == 'cash_on_delivery')
+        {
+            $email = auth()->user()->email;
+            $messageData = [
+                'email'=>$email,
+                'name'=>$request->input('shipping_fullname'),
+                'orderNumber'=>$orderNumber,
+            ];
+            Mail::send('show',$messageData,function($message) use($email)
+            {
+                $message->to($email)->subject('Order Placed');
+            });
+        }
+
         if(request('payment_method') == 'paypal')
         {
             return redirect()->route('paypal.checkout',$order->id);

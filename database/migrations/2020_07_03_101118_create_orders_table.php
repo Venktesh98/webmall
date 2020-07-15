@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('order_number');
+            $table->string('user_email');
             $table->unsignedBigInteger('user_id');
             $table->enum('status', ['pending','processing','completed','decline'])->default('pending');
             $table->float('grand_total');
@@ -40,6 +41,7 @@ class CreateOrdersTable extends Migration
             $table->string('billing_phone');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_email')->references('email')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });
