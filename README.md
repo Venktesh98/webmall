@@ -3,8 +3,8 @@ Webmall is basically Multi-Vendor Ecommerce application where the user can buy h
 Technologies Used:  <br />
 Laravel 7  <br />
 Voyager-For Admin Panel mainting the seller informaton and customer transactions and all.  <br />
-livewire  <br />  
-darryldecode  <br />
+livewire <br />  
+darryldecode <br />
 paypal sandbox
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
